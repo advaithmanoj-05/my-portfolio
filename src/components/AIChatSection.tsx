@@ -7,13 +7,14 @@ import { RESUME_DATA } from '@/data/resumeData';
 
 export default function AIChatSection() {
   const isEnabled = RESUME_DATA.aiChat?.enabled !== false;
+  const [mounted, setMounted] = useState(false);
 
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'welcome',
       sender: 'ai',
       text: `Hello! 👋 I'm **AI Advaith**, a virtual persona powered by Advaith Manoj's portfolio context.\n\nAsk me anything about my **backend architecture, FastAPI/Spring Boot projects, experience at Obsidyne/CDC**, or **job availability**!`,
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: '12:00 AM', // Fixed static timestamp for initial SSR render to prevent React hydration mismatch
     },
   ]);
   const [input, setInput] = useState('');
@@ -28,18 +29,30 @@ export default function AIChatSection() {
 
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Initialize and update rate limit status
+  // Set mounted and update timestamp/rate limit client-side
   useEffect(() => {
-    if (!isEnabled) return;
+    setMounted(true);
+    setMessages((prev) =>
+      prev.map((m) =>
+        m.id === 'welcome'
+          ? { ...m, timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }
+          : m
+      )
+    );
+  }, []);
+
+  // Update rate limit status
+  useEffect(() => {
+    if (!isEnabled || !mounted) return;
     const updateLimit = () => {
       setRateLimit(getRateLimitState());
     };
     updateLimit();
     const interval = setInterval(updateLimit, 1000);
     return () => clearInterval(interval);
-  }, [isEnabled]);
+  }, [isEnabled, mounted]);
 
-  // Scroll inner chat container strictly (prevents entire page from jumping down!)
+  // Scroll inner chat container strictly
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -75,7 +88,7 @@ export default function AIChatSection() {
     setRateLimit(updatedLimit);
 
     try {
-      // Async call with proxy / API execution & local fallback
+      // Async call with Cloudflare Pages Function / API execution & local fallback
       const result = await generateAIResponseAsync(query);
       setActiveEngine(result.engineUsed);
 
@@ -92,7 +105,7 @@ export default function AIChatSection() {
       const errorMsg: ChatMessage = {
         id: `ai-err-${Date.now()}`,
         sender: 'ai',
-        text: "I encountered a minor network issue. Switched to local engine!",
+        text: "Switched to local engine response.",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         engineUsed: 'local',
       };
