@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { RESUME_DATA } from '@/data/resumeData';
 import AvatarSector from './AvatarSector';
+import LikeButton from './LikeButton';
 
 export default function HeroSection() {
   const [activeTab, setActiveTab] = useState<'telemetry' | 'stack' | 'architecture'>('telemetry');
@@ -53,6 +54,7 @@ export default function HeroSection() {
                 <span className="material-symbols-outlined text-base">code</span>
                 <span>GitHub @{RESUME_DATA.personal.githubHandle}</span>
               </a>
+              <LikeButton />
             </div>
 
             {/* Active Tech Stack Quick Pills */}
