@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 @tailwind base;
@@ -10,20 +10,92 @@
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
-  ::-webkit-scrollbar { display: none; }
+  
+  /* Hide scrollbar for clean horizontal panels */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
-/* Motorsport racing grid & speed-line accents */
-.carbon-grid {
-  background-image: radial-gradient(rgba(255, 107, 0, 0.08) 1px, transparent 0);
-  background-size: 24px 24px;
+/* Material Symbols Outlined settings */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.fill {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-.light .carbon-grid {
-  background-image: radial-gradient(rgba(255, 107, 0, 0.09) 1px, transparent 0);
+/* Ref2 / Auralis System Utility Classes */
+.bg-auralis-canvas {
+  background-color: #F7F7F5;
+}
+.dark .bg-auralis-canvas {
+  background-color: #090a0c;
 }
 
-.slanted-corner {
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+.bg-panel-auralis {
+  background-color: #F3F2EF;
+}
+.dark .bg-panel-auralis {
+  background-color: #111319;
+}
+
+.bg-card-auralis {
+  background-color: #FCFCFB;
+}
+.dark .bg-card-auralis {
+  background-color: #171a23;
+}
+
+.border-auralis {
+  border-color: #E7E7E4;
+}
+.dark .border-auralis {
+  border-color: #242936;
+}
+
+.text-secondary-auralis {
+  color: #6B6B6B;
+}
+.dark .text-secondary-auralis {
+  color: #9ca3af;
+}
+
+/* Crisp rendering for retro 8-bit avatars */
+.pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+/* 3D Flip Card Effect for Avatar */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Micro-glows */
+.glow-blur-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(168, 85, 247, 0.15) 50%, transparent 80%);
+}
+.glow-blur-emerald {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, rgba(20, 184, 166, 0.15) 50%, transparent 80%);
+}
+.glow-blur-amber {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(249, 115, 22, 0.15) 50%, transparent 80%);
 }

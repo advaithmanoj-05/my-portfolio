@@ -1,77 +1,77 @@
+'use client';
+
 import { RESUME_DATA } from '@/data/resumeData';
 
 export default function AcademicsSection() {
   const { education, certifications } = RESUME_DATA;
 
   return (
-    <section id="education" className="space-y-6">
-      <div className="border-b border-track-200 dark:border-carbon-border pb-4">
-        <div className="flex items-center gap-2 font-mono text-xs text-papaya font-bold uppercase tracking-wider">
-          <span className="w-2 h-2 bg-papaya"></span>
-          <span>ACADEMICS // CERTIFICATIONS & SPEC</span>
-        </div>
-        <h2 className="font-headline text-4xl sm:text-5xl font-black uppercase text-track-text dark:text-white tracking-tight">
-          EDUCATION & CERTIFICATIONS
-        </h2>
+    <section id="academics" className="max-w-[1280px] mx-auto px-6 sm:px-8 mb-20 sm:mb-28">
+      {/* Module Header */}
+      <div className="flex items-center gap-4 mb-8">
+        <span className="text-xs font-mono font-bold bg-panel-auralis text-auralis-primary dark:text-white px-3.5 py-1.5 rounded-full border border-auralis uppercase tracking-wider">
+          Academics & Certifications
+        </span>
+        <div className="h-px bg-auralis flex-grow opacity-60" />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Degree (7 cols) */}
-        <div className="lg:col-span-7 p-6 rounded-xl bg-track-100 dark:bg-carbon-850 border border-track-200 dark:border-carbon-border flex flex-col justify-between space-y-4">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between font-mono text-xs">
-              <span className="text-papaya font-bold uppercase">DEGREE // BACHELOR OF TECHNOLOGY</span>
-              <span className="px-2 py-0.5 rounded bg-papaya/10 text-papaya border border-papaya/30 font-bold uppercase">
-                {education.timeline}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Education Card */}
+        <div className="lg:col-span-7 bg-card-auralis rounded-3xl p-6 sm:p-8 border border-auralis flex flex-col justify-between shadow-2xs">
+          <div>
+            <div className="flex flex-wrap justify-between items-start gap-2 mb-4">
+              <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                {education.semester}
+              </span>
+              <span className="text-xs font-mono font-bold text-auralis-primary dark:text-white bg-panel-auralis px-3 py-1 rounded-full border border-auralis">
+                CGPA: {education.cgpa}
               </span>
             </div>
-            <h3 className="font-headline text-3xl font-bold uppercase text-track-text dark:text-white">
+
+            <h3 className="text-xl sm:text-2xl font-bold text-auralis-primary dark:text-white mb-1">
               {education.degree}
             </h3>
-            <p className="font-headline text-xl text-track-subtext dark:text-gray-300 font-semibold uppercase">
-              {education.institution}
+            <p className="text-sm font-semibold text-secondary-auralis mb-3">
+              {education.institution} — {education.location}
             </p>
-            <p className="font-body text-sm text-track-subtext dark:text-gray-300">
+            <p className="text-xs sm:text-sm text-secondary-auralis leading-relaxed mb-6">
               {education.details}
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-track-200 dark:border-carbon-700 font-mono text-xs">
-            <div className="p-3 rounded bg-track-50 dark:bg-carbon-900 border border-track-200 dark:border-carbon-800">
-              <span className="text-gray-500 block uppercase">CUMULATIVE CGPA</span>
-              <span className="font-headline text-2xl font-black text-papaya">{education.cgpa}</span>
-            </div>
-            <div className="p-3 rounded bg-track-50 dark:bg-carbon-900 border border-track-200 dark:border-carbon-800">
-              <span className="text-gray-500 block uppercase">CURRENT SEMESTER</span>
-              <span className="font-headline text-2xl font-black text-track-text dark:text-white">{education.semester}</span>
-            </div>
+          <div className="pt-4 border-t border-auralis flex items-center justify-between text-xs font-mono text-secondary-auralis">
+            <span>Timeline: {education.timeline}</span>
+            <span>Specialization: CSE Systems</span>
           </div>
         </div>
 
-        {/* Certifications (5 cols) */}
-        <div className="lg:col-span-5 p-6 rounded-xl bg-track-100 dark:bg-carbon-850 border border-track-200 dark:border-carbon-border space-y-4">
-          <div className="flex items-center gap-2 border-b border-track-200 dark:border-carbon-700 pb-3">
-            <span className="material-symbols-outlined text-papaya text-xl">workspace_premium</span>
-            <h3 className="font-headline text-2xl font-bold uppercase text-track-text dark:text-white">
-              CERTIFICATIONS
-            </h3>
-          </div>
+        {/* Certifications Card List */}
+        <div className="lg:col-span-5 bg-panel-auralis rounded-3xl p-6 sm:p-8 border border-auralis flex flex-col justify-between">
+          <div>
+            <h4 className="text-xs font-mono font-bold text-secondary-auralis uppercase tracking-[0.2em] mb-4">
+              VERIFIED CERTIFICATIONS
+            </h4>
 
-          <div className="space-y-3 font-mono text-xs">
-            {certifications.map((cert) => (
-              <div
-                key={cert.id}
-                className="p-3 rounded bg-track-50 dark:bg-carbon-900 border border-track-200 dark:border-carbon-800 space-y-1"
-              >
-                <div className="flex items-center justify-between text-papaya font-bold">
-                  <span>{cert.issuer}</span>
-                  <span>{cert.detail}</span>
+            <div className="space-y-4">
+              {certifications.map((cert) => (
+                <div 
+                  key={cert.id}
+                  className="bg-card-auralis rounded-2xl p-4 border border-auralis flex items-center justify-between hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors"
+                >
+                  <div>
+                    <h5 className="font-bold text-xs sm:text-sm text-auralis-primary dark:text-white leading-tight">
+                      {cert.title}
+                    </h5>
+                    <p className="text-[11px] font-mono text-secondary-auralis mt-0.5">
+                      {cert.issuer} • {cert.detail}
+                    </p>
+                  </div>
+                  <span className="material-symbols-outlined text-emerald-500 text-lg shrink-0 ml-2">
+                    verified
+                  </span>
                 </div>
-                <p className="font-body text-sm text-track-text dark:text-gray-200 font-medium">
-                  {cert.title}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

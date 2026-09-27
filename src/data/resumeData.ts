@@ -74,7 +74,15 @@ export const RESUME_DATA = {
       "Hugging Face",
       "Linux"
     ],
-    photoUrl: "https://lh3.googleusercontent.com/aida-public/AB6AXuDyLLokcT2jJhwltajNtZX3FoBEBEXDslzBakzgK_8y8_OP76Z4hAODRKMl0QXYwLcepVTftnhSCO-hbHo0091XUt2PrEn7N13l3dZ9B1Wyr7wUUHEekTDqgcVvbqvo5lyfjkB_MsotOHjwlb8UjjnexZAbOdzSF0P7MF3OBu-ZKE7ki4wKCxA7Mg5JMya7A_gaUCXU8xcAaohlXwPqgoyjuvIQW_W937vcyAOLjVhcGg7EBvBWJCfAq4QgQ5v-SGAc"
+    photoUrl: "/images/avatar-real.jpg",
+    avatar8BitUrl: "/images/avatar-8bit.png"
+  },
+  aiChat: {
+    enabled: process.env.NEXT_PUBLIC_ENABLE_AI_CHAT !== 'false',
+    cfAccountId: process.env.NEXT_PUBLIC_CF_ACCOUNT_ID || '',
+    cfApiToken: process.env.NEXT_PUBLIC_CF_API_TOKEN || '',
+    apiUrl: process.env.NEXT_PUBLIC_AI_API_URL || '',
+    apiKey: process.env.NEXT_PUBLIC_AI_API_KEY || '',
   },
   metrics: [
     {

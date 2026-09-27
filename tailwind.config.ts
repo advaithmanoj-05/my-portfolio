@@ -10,38 +10,46 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // McLaren LN4 Papaya Orange Core Palette
-        papaya: {
-          DEFAULT: '#FF6B00',
-          glow: '#FF7A00',
-          light: '#FF9442',
-          dark: '#D95300',
-          surface: 'rgba(255, 107, 0, 0.08)',
-        },
-        // Dark Mode: Deep Carbon / Matte Anthracite
-        carbon: {
-          950: '#0a0c10',
-          900: '#0e1015',
-          850: '#14171f',
-          800: '#1c2029',
-          700: '#282d3a',
-          600: '#383f4f',
-          border: '#242936'
-        },
-        // Light Mode: Clean Athletic Off-White & Concrete
-        track: {
-          50: '#f8f9fa',
-          100: '#f1f3f5',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          text: '#111827',
-          subtext: '#4b5563'
+        // Auralis System Palette (Ref2)
+        auralis: {
+          bg: '#F7F7F5',
+          panel: '#F3F2EF',
+          card: '#FCFCFB',
+          border: '#E7E7E4',
+          primary: '#111111',
+          secondary: '#6B6B6B',
+          accent: '#000000',
+          // Dark Mode Counterparts
+          darkBg: '#090a0c',
+          darkPanel: '#111319',
+          darkCard: '#171a23',
+          darkBorder: '#242936',
+          darkText: '#f3f4f6',
+          darkMuted: '#9ca3af',
         }
       },
       fontFamily: {
-        headline: ['"Barlow Condensed"', 'sans-serif'],
-        body: ['var(--font-geist)', 'Geist', 'Inter', 'sans-serif'],
+        geist: ['Geist', 'Inter', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+      },
+      animation: {
+        'marquee': 'marquee 35s linear infinite',
+        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+        'float': 'float 4s ease-in-out infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+          '50%': { opacity: '0.8', transform: 'scale(1.03)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-6px)' },
+        },
       }
     },
   },
