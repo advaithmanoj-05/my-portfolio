@@ -68,9 +68,13 @@ export default function Navbar() {
             <a href="#about" className="text-secondary-auralis hover:text-auralis-primary dark:hover:text-white transition-colors">
               Overview
             </a>
-            <a href="#ai-chat" className="text-secondary-auralis hover:text-auralis-primary dark:hover:text-white transition-colors flex items-center gap-1">
-              <span>AI Chat</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+            <a 
+              href="#ai-chat" 
+              className="px-3.5 py-1.5 rounded-full bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-white font-mono text-xs font-bold flex items-center gap-1.5 shadow-md shadow-emerald-500/25 hover:scale-105 active:scale-98 transition-all duration-300"
+            >
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              <span>AI CHAT</span>
+              <span className="text-[10px]">🤖</span>
             </a>
             <a href="#architecture" className="text-secondary-auralis hover:text-auralis-primary dark:hover:text-white transition-colors">
               Telemetry
